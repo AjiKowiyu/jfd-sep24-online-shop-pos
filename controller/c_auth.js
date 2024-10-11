@@ -4,7 +4,10 @@ module.exports =
 {
 
     halaman_login: function(req,res) {
-        res.render('v_auth/login')
+        let data = {
+            notifikasi: req.query.notif,
+        }
+        res.render('v_auth/login', data)
     },
 
 
