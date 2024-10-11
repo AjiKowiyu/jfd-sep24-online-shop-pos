@@ -5,10 +5,14 @@ module.exports =
 {
 
     halaman_login: function(req,res) {
-        let data = {
-            notifikasi: req.query.notif,
+        if (req.session.user) {
+            res.redirect('/toko')
+        } else {
+            let data = {
+                notifikasi: req.query.notif,
+            }
+            res.render('v_auth/login', data)
         }
-        res.render('v_auth/login', data)
     },
 
 
