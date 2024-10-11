@@ -20,7 +20,6 @@ module.exports =
 
         // cek email yg diinput, ada gak di db
         let email_exist = await model_user.cari_email(form_email)
-        console.log(email_exist)
 
         if (email_exist.length > 0) {
             // cek password
