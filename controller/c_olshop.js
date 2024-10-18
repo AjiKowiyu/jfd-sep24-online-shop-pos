@@ -8,6 +8,12 @@ module.exports =
             kategoriProduk: await m_prod_kategori.getSemua()
         }
         res.render('v_olshop/beranda', data)
-    }
+    },
+
+
+
+    halaman_index_produk: function(req,res) {
+        res.render('v_olshop/produk/index')
+    },
 
 }
