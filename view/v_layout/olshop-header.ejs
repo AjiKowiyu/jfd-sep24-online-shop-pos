@@ -38,30 +38,13 @@
     <div class="collapse" id="collapseExample">
         <div class="card card-body text-white">
             <div class="row">
-                <div class="col-lg-3">
-                    <a href="/olshop/produk/kategori/id">Kategori A</a><br>
-                    <a href="/olshop/produk/kategori/id">Kategori A</a><br>
-                    <a href="/olshop/produk/kategori/id">Kategori A</a><br>
-                    <a href="/olshop/produk/kategori/id">Kategori A</a><br>
-                </div>
-                <div class="col-lg-3">
-                    <a href="/olshop/produk/kategori/id">Kategori B</a><br>
-                    <a href="/olshop/produk/kategori/id">Kategori B</a><br>
-                    <a href="/olshop/produk/kategori/id">Kategori B</a><br>
-                    <a href="/olshop/produk/kategori/id">Kategori B</a><br>
-                </div>
-                <div class="col-lg-3">
-                    <a href="/olshop/produk/kategori/id">Kategori C</a><br>
-                    <a href="/olshop/produk/kategori/id">Kategori C</a><br>
-                    <a href="/olshop/produk/kategori/id">Kategori C</a><br>
-                    <a href="/olshop/produk/kategori/id">Kategori C</a><br>
-                </div>
-                <div class="col-lg-3">
-                    <a href="/olshop/produk/kategori/id">Kategori D</a><br>
-                    <a href="/olshop/produk/kategori/id">Kategori D</a><br>
-                    <a href="/olshop/produk/kategori/id">Kategori D</a><br>
-                    <a href="/olshop/produk/kategori/id">Kategori D</a><br>
-                </div>
+                <% for (const i in kategoriProduk) { %>
+                    <div class="col-lg-3">
+                        <a href="/olshop/produk/kategori/<%= kategoriProduk[i].id %>" class="text-decoration-none">
+                            <%= kategoriProduk[i].nama %>
+                        </a><br>
+                    </div>
+                <% } %>
             </div>
         </div>
     </div>
