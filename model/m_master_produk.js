@@ -11,7 +11,10 @@ module.exports =
 
     getSemua: function() {
         let sqlSyntax = mysql.format(
-            `SELECT * FROM master_produk`
+            `SELECT
+                p.*, k.nama as kategori_nama 
+            FROM master_produk as p
+            LEFT JOIN master_produk_kategori as k ON k.id = p.kategori_id;`
         )
         return eksekusi( sqlSyntax )
     },

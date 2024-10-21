@@ -15,7 +15,9 @@ module.exports =
 
     halaman_index_produk: async function(req,res) {
         let data = {
-            kategoriProduk: await m_prod_kategori.getSemua()
+            kategoriProduk  : await m_prod_kategori.getSemua(),
+            produkJual      : await m_master_produk.getSemua(),
+            notifikasi      : req.query.notif,
         }
         res.render('v_olshop/produk/index', data)
     },
