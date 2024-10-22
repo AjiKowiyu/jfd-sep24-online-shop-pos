@@ -8,7 +8,9 @@ module.exports =
 
     halaman_beranda: async function(req,res) {
         let data = {
-            kategoriProduk: await m_prod_kategori.getSemua()
+            kategoriProduk: await m_prod_kategori.getSemua(),
+            produkJual: await m_master_produk.getSemua(),
+            moment: moment,
         }
         res.render('v_olshop/beranda', data)
     },
