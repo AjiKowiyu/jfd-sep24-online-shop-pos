@@ -37,6 +37,13 @@
     <!-- Wrap the rest of the page in another container to center all the content. -->
   
     <div class="container mb-5">
+
+        <% if (typeof notifikasi !== 'undefined') { %>
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <%- notifikasi %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% } %>
   
         <div class="row">
             <% for (const i in produkJual) { %>
@@ -66,7 +73,16 @@
                                     <a href="/olshop/produk/detail/<%= produkJual[i].id %>" class="btn btn-sm btn-outline-secondary text-capitalize mb-2">lihat produk</a>
                                 </div>
                                 <div class="col-6 text-end">
-                                    <a href="#" class="btn btn-sm btn-primary rounded-circle shadow-sm mb-2"><i class="fa-solid fa-cart-shopping"></i></a>
+                                    <%
+                                        let produkSudahAdaDiKeranjang = produkExist_diKeranjang.find(o => o.id_produk === produkJual[i].id);
+                                    %>
+                                    <% if (produkSudahAdaDiKeranjang) { %>
+                                        <button class="btn btn-sm btn-success rounded-circle">
+                                            <i class="fa-solid fa-check"></i>
+                                        </button>
+                                    <% } else { %>
+                                            <a href="/olshop/keranjang/input/<%= produkJual[i].id %>" class="btn btn-sm btn-primary rounded-circle shadow-sm mb-2"><i class="fa-solid fa-cart-shopping"></i></a>
+                                    <% } %>
                                 </div>
                             </div>
                         </div>
