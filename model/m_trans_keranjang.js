@@ -17,6 +17,8 @@ module.exports =
         return eksekusi( sqlSyntax )
     },
 
+
+
     masukkan: function(req) {
         let sqlData = {
             id_produk   : req.params.id_produk,
@@ -31,4 +33,16 @@ module.exports =
         )
         return eksekusi( sqlSyntax )
     },
+
+
+
+    getJumlahProduk_diKeranjang: function(req) {
+        let sqlSyntax = mysql.format(
+            `SELECT COUNT(id_produk) as jumlah
+            FROM trans_keranjang
+            WHERE id_user = ?`,
+            [req.session.user[0].id]
+        )
+        return eksekusi( sqlSyntax )
+    }
 }
