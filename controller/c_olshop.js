@@ -124,6 +124,17 @@ module.exports =
         } catch (error) {
             res.redirect(`/olshop?notif=${error.message}`)
         }
+    },
+
+
+
+    keranjang_list: async function(req,res) {
+        let data = {
+            kategoriProduk      : await m_prod_kategori.getSemua(),
+            produk_diKeranjang  : await m_trans_keranjang.getJumlahProduk_diKeranjang(req),
+            moment              : moment,
+        }
+        res.render('v_olshop/keranjang/list', data)
     }
 
 }
