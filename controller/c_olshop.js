@@ -130,9 +130,10 @@ module.exports =
 
     keranjang_list: async function(req,res) {
         let data = {
-            kategoriProduk      : await m_prod_kategori.getSemua(),
-            produk_diKeranjang  : await m_trans_keranjang.getJumlahProduk_diKeranjang(req),
-            moment              : moment,
+            kategoriProduk          : await m_prod_kategori.getSemua(),
+            produk_diKeranjang      : await m_trans_keranjang.getJumlahProduk_diKeranjang(req),
+            detailProduk_keranjang  : await m_trans_keranjang.getDetailProduk_diKeranjang(req),
+            moment                  : moment,
         }
         res.render('v_olshop/keranjang/list', data)
     }
