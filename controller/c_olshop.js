@@ -3,6 +3,7 @@ const moment            = require('moment')
 const m_prod_kategori   = require('../model/m_master_produk_kategori')
 const m_master_produk   = require('../model/m_master_produk')
 const m_trans_keranjang = require('../model/m_trans_keranjang')
+const m_trans_pembelian = require('../model/m_trans_pembelian')
 
 module.exports =
 {
@@ -135,6 +136,7 @@ module.exports =
             detailProduk_keranjang  : await m_trans_keranjang.getDetailProduk_diKeranjang(req),
             moment                  : moment,
             notifikasi              : req.query.notif,
+            user_id_role            : req.session.user[0].role_id,
         }
         res.render('v_olshop/keranjang/list', data)
     },
@@ -150,6 +152,23 @@ module.exports =
             }
         } catch (error) {
             res.redirect(`/olshop/keranjang/list?notif=${error.message}`)
+        }
+    },
+
+
+
+    keranjang_bayar: async function(req,res) {
+        try {
+            let insert  = await m_trans_pembelian.insertSemua(req)
+            if (insert.affectedRows > 0) {
+                // hapus keranjang by id_user
+                let hapusKeranjang = await m_trans_keranjang.hapus_by_user(req)
+                if (hapusKeranjang.affectedRows > 0) {
+                    res.redirect(`/olshop?notif=Berhasil bayar`)
+                }
+            }
+        } catch (error) {
+            res.redirect(`/olshop?notif=${error.message}`)
         }
     }
 
