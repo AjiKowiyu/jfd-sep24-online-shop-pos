@@ -63,4 +63,14 @@ module.exports =
 
 
 
+    hapus: function(req) {
+        let sqlSyntax = mysql.format(
+            `DELETE FROM trans_keranjang WHERE id = ?`,
+            [req.params.id_keranjang]
+        )
+        return eksekusi( sqlSyntax )
+    },
+
+
+
 }
