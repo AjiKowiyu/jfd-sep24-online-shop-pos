@@ -10,6 +10,7 @@ module.exports =
 
     halaman_beranda: async function(req,res) {
         let data = {
+            req                     : req,
             kategoriProduk          : await m_prod_kategori.getSemua(),
             produk_diKeranjang      : await m_trans_keranjang.getJumlahProduk_diKeranjang(req),
             produkJual              : await m_master_produk.getSemua(),
@@ -26,6 +27,7 @@ module.exports =
 
     halaman_index_produk: async function(req,res) {
         let data = {
+            req                 : req,
             kategoriProduk      : await m_prod_kategori.getSemua(),
             produk_diKeranjang  : await m_trans_keranjang.getJumlahProduk_diKeranjang(req),
             produkJual          : await m_master_produk.getSemua(),
@@ -40,6 +42,7 @@ module.exports =
 
     halaman_form_tambah: async function(req,res) {
         let data = {
+            req                 : req,
             kategoriProduk      : await m_prod_kategori.getSemua(),
             produk_diKeranjang  : await m_trans_keranjang.getJumlahProduk_diKeranjang(req),
             produk_diProses     : await m_trans_pembelian.getJumlahProduk_diProses(req),
@@ -112,6 +115,7 @@ module.exports =
     detail_produk: async function(req,res) {
         let id = req.params.id_produk
         let data = {
+            req                 : req,
             kategoriProduk      : await m_prod_kategori.getSemua(),
             produk_diKeranjang  : await m_trans_keranjang.getJumlahProduk_diKeranjang(req),
             produkJual          : await m_master_produk.getSatu( id ),
@@ -139,6 +143,7 @@ module.exports =
 
     keranjang_list: async function(req,res) {
         let data = {
+            req                     : req,
             kategoriProduk          : await m_prod_kategori.getSemua(),
             produk_diKeranjang      : await m_trans_keranjang.getJumlahProduk_diKeranjang(req),
             detailProduk_keranjang  : await m_trans_keranjang.getDetailProduk_diKeranjang(req),
