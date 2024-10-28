@@ -51,9 +51,19 @@
                                     <% } %>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li>
+                                        <% for(let i in detailProduk_diProses) { %>
+                                            <div class="dropdown-item">
+                                                <table>
+                                                    <tr>
+                                                        <td><%= detailProduk_diProses[i].produk_nama %> (<%= detailProduk_diProses[i].qty %>)</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                        <td class="text-end">Rp <%= Number(detailProduk_diProses[i].harga).toLocaleString('id-ID') %></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        <% } %>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
