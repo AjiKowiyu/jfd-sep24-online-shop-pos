@@ -52,6 +52,8 @@ app.get('/olshop/keranjang/list', cek_login, c_olshop.keranjang_list)
 app.post('/olshop/keranjang/hapus/:id_keranjang', cek_login, c_olshop.keranjang_hapus)
 app.post('/olshop/keranjang/bayar', cek_login, c_olshop.keranjang_bayar)
 
+app.get('/percobaan-hash-password/:inputpassword', c_auth.percobaan)
+
 
 app.listen(port, ()=>{
     console.log(`Aplikasi sudah siap, buka http://localhost:${port}`)
