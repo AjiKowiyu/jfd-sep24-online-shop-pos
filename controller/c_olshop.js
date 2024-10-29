@@ -190,6 +190,31 @@ module.exports =
         } catch (error) {
             res.redirect(`/olshop?notif=${error.message}`)
         }
-    }
+    },
+
+
+
+    orderanMasuk_list: async function(req,res) {
+        let semuaCustomer_ygBeli = await m_trans_pembelian.getSemuaCustomer()
+        for (const i in semuaCustomer_ygBeli) {
+            let id_user = semuaCustomer_ygBeli[i].id_user
+            semuaCustomer_ygBeli[i].produk_yang_dibeli = await m_trans_pembelian.getSemuaProduk_byCustomer(id_user)
+        }
+
+        let data = {
+            req                     : req,
+            kategoriProduk          : await m_prod_kategori.getSemua(),
+            produk_diKeranjang      : await m_trans_keranjang.getJumlahProduk_diKeranjang(req),
+            detailProduk_keranjang  : await m_trans_keranjang.getDetailProduk_diKeranjang(req),
+            moment                  : moment,
+            notifikasi              : req.query.notif,
+            user_id_role            : req.session.user[0].role_id,
+            produk_diProses         : await m_trans_pembelian.getJumlahProduk_diProses(req),
+            detailProduk_diProses   : await m_trans_pembelian.getDetailProduk_diProses(req),
+            orderanMasuk            : await m_trans_pembelian.getJumlahOrderanMasuk(),
+            orderanMasuk_detail     : semuaCustomer_ygBeli,
+        }
+        res.render('v_olshop/orderan-masuk/list', data)
+    },
 
 }

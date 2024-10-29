@@ -73,4 +73,38 @@ module.exports =
 
 
 
+    getSemuaCustomer: function() {
+        let sqlSyntax = mysql.format(
+            `SELECT DISTINCT pmb.id_user, u.nama_lengkap, u.email
+            FROM trans_pembelian as pmb
+            LEFT JOIN user as u ON u.id = pmb.id_user
+            WHERE
+                dikirim IS NULL
+                AND diterima IS NULL`
+        )
+        return eksekusi( sqlSyntax )
+    },
+
+
+
+    getSemuaProduk_byCustomer: function(id_user) {
+        let sqlSyntax = mysql.format(
+            `SELECT
+                pmb.*,
+                pro.nama as produk_nama, pro.harga, pro.stok, pro.foto1,
+                u.email, u.nama_lengkap
+            FROM trans_pembelian as pmb
+            LEFT JOIN master_produk as pro  ON pro.id = pmb.id_produk
+            LEFT JOIN user as u             ON u.id = pmb.id_user
+            WHERE
+                dikirim IS NULL
+                AND diterima IS NULL
+                AND id_user = ?`,
+            [id_user]
+        )
+        return eksekusi( sqlSyntax )
+    },
+
+
+
 }

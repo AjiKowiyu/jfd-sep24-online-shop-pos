@@ -51,6 +51,7 @@ app.get('/olshop/keranjang/input/:id_produk', cek_login, c_olshop.keranjang_inpu
 app.get('/olshop/keranjang/list', cek_login, c_olshop.keranjang_list)
 app.post('/olshop/keranjang/hapus/:id_keranjang', cek_login, c_olshop.keranjang_hapus)
 app.post('/olshop/keranjang/bayar', cek_login, c_olshop.keranjang_bayar)
+app.get('/olshop/orderan-masuk/list', cek_login, c_olshop.orderanMasuk_list)
 
 app.get('/percobaan-hash-password/:inputpassword', c_auth.percobaan)
 
