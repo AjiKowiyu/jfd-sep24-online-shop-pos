@@ -63,4 +63,14 @@ module.exports =
 
 
 
+    getJumlahOrderanMasuk: function() {
+        let sqlSyntax = mysql.format(
+            `SELECT COUNT(id_produk) as jumlah
+            FROM trans_pembelian`
+        )
+        return eksekusi( sqlSyntax )
+    },
+
+
+
 }

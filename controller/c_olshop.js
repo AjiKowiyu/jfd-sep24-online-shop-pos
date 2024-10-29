@@ -19,6 +19,7 @@ module.exports =
             produkExist_diKeranjang : await m_trans_keranjang.cekProdukExist(req),
             produk_diProses         : await m_trans_pembelian.getJumlahProduk_diProses(req),
             detailProduk_diProses   : await m_trans_pembelian.getDetailProduk_diProses(req),
+            orderanMasuk            : await m_trans_pembelian.getJumlahOrderanMasuk(),
         }
         res.render('v_olshop/beranda', data)
     },
@@ -34,6 +35,7 @@ module.exports =
             notifikasi          : req.query.notif,
             produk_diProses     : await m_trans_pembelian.getJumlahProduk_diProses(req),
             detailProduk_diProses   : await m_trans_pembelian.getDetailProduk_diProses(req),
+            orderanMasuk            : await m_trans_pembelian.getJumlahOrderanMasuk(),
         }
         res.render('v_olshop/produk/index', data)
     },
@@ -47,6 +49,7 @@ module.exports =
             produk_diKeranjang  : await m_trans_keranjang.getJumlahProduk_diKeranjang(req),
             produk_diProses     : await m_trans_pembelian.getJumlahProduk_diProses(req),
             detailProduk_diProses   : await m_trans_pembelian.getDetailProduk_diProses(req),
+            orderanMasuk            : await m_trans_pembelian.getJumlahOrderanMasuk(),
         }
         res.render('v_olshop/produk/form-tambah', data)
     },
@@ -121,6 +124,7 @@ module.exports =
             produkJual          : await m_master_produk.getSatu( id ),
             produk_diProses     : await m_trans_pembelian.getJumlahProduk_diProses(req),
             detailProduk_diProses   : await m_trans_pembelian.getDetailProduk_diProses(req),
+            orderanMasuk            : await m_trans_pembelian.getJumlahOrderanMasuk(),
             moment              : moment,
         }
         res.render('v_olshop/produk/detail', data)
@@ -152,6 +156,7 @@ module.exports =
             user_id_role            : req.session.user[0].role_id,
             produk_diProses         : await m_trans_pembelian.getJumlahProduk_diProses(req),
             detailProduk_diProses   : await m_trans_pembelian.getDetailProduk_diProses(req),
+            orderanMasuk            : await m_trans_pembelian.getJumlahOrderanMasuk(),
         }
         res.render('v_olshop/keranjang/list', data)
     },
