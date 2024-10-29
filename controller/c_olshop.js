@@ -217,4 +217,18 @@ module.exports =
         res.render('v_olshop/orderan-masuk/list', data)
     },
 
+
+
+    orderanMasuk_prosesKirimBarang: async function(req,res) {
+        let id_customer = req.params.id_customer
+        try {
+            let update  = await m_trans_pembelian.updateDikirim_byIdCustomer(id_customer)
+            if (update.affectedRows > 0) {
+                res.redirect(`/olshop/orderan-masuk/list?notif=Berhasil bayar`)
+            }
+        } catch (error) {
+            res.redirect(`/olshop/orderan-masuk/list?notif=${error.message}`)
+        }
+    }
+
 }

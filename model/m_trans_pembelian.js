@@ -107,4 +107,18 @@ module.exports =
 
 
 
+    updateDikirim_byIdCustomer: function(id_customer) {
+        let sqlData = {
+            dikirim: 1,
+            updated_at: moment().format('YYYY-MM-DD HH:mm:ss'),
+        }
+        let sqlSyntax = mysql.format(
+            `UPDATE trans_pembelian SET ? WHERE id_user = ?`,
+            [sqlData, id_customer]
+        )
+        return eksekusi( sqlSyntax )
+    },
+
+
+
 }
