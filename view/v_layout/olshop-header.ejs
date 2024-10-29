@@ -50,7 +50,7 @@
                                         <% } %>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><span class="dropdown-item">Produk yang sedang diproses oleh penjual</span></li>
+                                        <li><span class="dropdown-item">Pesanan sedang diproses oleh penjual</span></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li>
                                             <% for(let i in detailProduk_diProses) { %>
@@ -60,6 +60,48 @@
                                                             <td><%= detailProduk_diProses[i].produk_nama %> (<%= detailProduk_diProses[i].qty %>)</td>
                                                             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                                             <td class="text-end">Rp <%= Number(detailProduk_diProses[i].harga).toLocaleString('id-ID') %></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            <% } %>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item mx-1">
+                                <div class="dropdown">
+                                    <button class="nav-link position-relative" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-truck"></i>
+                                        <% if (produk_diKirim[0].jumlah > 0) { %>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                                <%= produk_diKirim[0].jumlah %>
+                                            </span>
+                                        <% } %>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <span class="dropdown-item">Pesanan sedang dikirim oleh kurir</span>
+                                                </div>
+                                                <div class="col-4">
+                                                    <a href="#" class="btn btn-sm btn-success"
+                                                    onclick="return confirm('Konfirmasi pesanan sudah diterima dengan baik ??')">
+                                                        Pesanan diterima
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li>
+                                            <% for(let i in detailProduk_diKirim) { %>
+                                                <div class="dropdown-item">
+                                                    <table>
+                                                        <tr>
+                                                            <td><%= detailProduk_diKirim[i].produk_nama %> (<%= detailProduk_diKirim[i].qty %>)</td>
+                                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                            <td class="text-end">Rp <%= Number(detailProduk_diKirim[i].harga).toLocaleString('id-ID') %></td>
                                                         </tr>
                                                     </table>
                                                 </div>

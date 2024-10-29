@@ -20,6 +20,8 @@ module.exports =
             produk_diProses         : await m_trans_pembelian.getJumlahProduk_diProses(req),
             detailProduk_diProses   : await m_trans_pembelian.getDetailProduk_diProses(req),
             orderanMasuk            : await m_trans_pembelian.getJumlahOrderanMasuk(),
+            produk_diKirim          : await m_trans_pembelian.getJumlahProduk_diKirim(req),
+            detailProduk_diKirim    : await m_trans_pembelian.getDetailProduk_diKirim(req),
         }
         res.render('v_olshop/beranda', data)
     },
@@ -36,6 +38,8 @@ module.exports =
             produk_diProses     : await m_trans_pembelian.getJumlahProduk_diProses(req),
             detailProduk_diProses   : await m_trans_pembelian.getDetailProduk_diProses(req),
             orderanMasuk            : await m_trans_pembelian.getJumlahOrderanMasuk(),
+            produk_diKirim          : await m_trans_pembelian.getJumlahProduk_diKirim(req),
+            detailProduk_diKirim    : await m_trans_pembelian.getDetailProduk_diKirim(req),
         }
         res.render('v_olshop/produk/index', data)
     },
@@ -50,6 +54,8 @@ module.exports =
             produk_diProses     : await m_trans_pembelian.getJumlahProduk_diProses(req),
             detailProduk_diProses   : await m_trans_pembelian.getDetailProduk_diProses(req),
             orderanMasuk            : await m_trans_pembelian.getJumlahOrderanMasuk(),
+            produk_diKirim          : await m_trans_pembelian.getJumlahProduk_diKirim(req),
+            detailProduk_diKirim    : await m_trans_pembelian.getDetailProduk_diKirim(req),
         }
         res.render('v_olshop/produk/form-tambah', data)
     },
@@ -125,6 +131,8 @@ module.exports =
             produk_diProses     : await m_trans_pembelian.getJumlahProduk_diProses(req),
             detailProduk_diProses   : await m_trans_pembelian.getDetailProduk_diProses(req),
             orderanMasuk            : await m_trans_pembelian.getJumlahOrderanMasuk(),
+            produk_diKirim          : await m_trans_pembelian.getJumlahProduk_diKirim(req),
+            detailProduk_diKirim    : await m_trans_pembelian.getDetailProduk_diKirim(req),
             moment              : moment,
         }
         res.render('v_olshop/produk/detail', data)
@@ -157,6 +165,8 @@ module.exports =
             produk_diProses         : await m_trans_pembelian.getJumlahProduk_diProses(req),
             detailProduk_diProses   : await m_trans_pembelian.getDetailProduk_diProses(req),
             orderanMasuk            : await m_trans_pembelian.getJumlahOrderanMasuk(),
+            produk_diKirim          : await m_trans_pembelian.getJumlahProduk_diKirim(req),
+            detailProduk_diKirim    : await m_trans_pembelian.getDetailProduk_diKirim(req),
         }
         res.render('v_olshop/keranjang/list', data)
     },
@@ -213,6 +223,8 @@ module.exports =
             detailProduk_diProses   : await m_trans_pembelian.getDetailProduk_diProses(req),
             orderanMasuk            : await m_trans_pembelian.getJumlahOrderanMasuk(),
             orderanMasuk_detail     : semuaCustomer_ygBeli,
+            produk_diKirim          : await m_trans_pembelian.getJumlahProduk_diKirim(req),
+            detailProduk_diKirim    : await m_trans_pembelian.getDetailProduk_diKirim(req),
         }
         res.render('v_olshop/orderan-masuk/list', data)
     },
@@ -229,6 +241,6 @@ module.exports =
         } catch (error) {
             res.redirect(`/olshop/orderan-masuk/list?notif=${error.message}`)
         }
-    }
+    },
 
 }
